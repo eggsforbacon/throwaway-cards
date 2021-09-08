@@ -52,14 +52,14 @@ public class Queue<T> {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         Node<T> head = front;
-        sb.append("(");
+        // sb.append("(");
         String prefix = "";
         while (head != null) {
             sb.append(prefix).append(head.data());
             prefix = ", ";
             head = head.next();
         }
-        sb.append(")");
+        // sb.append(")");
         return sb.toString();
     }
 }
