@@ -17,8 +17,10 @@ public class Deck {
 
     private void shuffleDiscard() {
         while (deck.size() > 1) {
-            throwaways.push(deck.dequeue());
-            deck.enqueue(deck.dequeue());
+            throwaways.push(deck.front());
+            deck.dequeue();
+            deck.enqueue(deck.front());
+            deck.dequeue();
         }
         throwaways = throwaways.reverse();
     }

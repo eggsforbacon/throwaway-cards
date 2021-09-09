@@ -30,6 +30,5 @@ public class Main {
             System.out.println((leadingText + deck.throwaways()).trim());
             System.out.println("Remaining card: " + deck.deck());
         }
-        System.out.println();
     }
 }

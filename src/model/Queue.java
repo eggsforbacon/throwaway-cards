@@ -26,14 +26,11 @@ public class Queue<T> {
         size++;
     }
 
-    public T dequeue() {
-        Node<T> trash = front;
+    public void dequeue() {
         if (front == null) throw new NoSuchElementException("Can't dequeue from an empty queue");
         else if (front == rear) front = rear = null;
         else front = front.next();
         size--;
-        return trash.data();
-
     }
 
     public T front() {

@@ -17,11 +17,9 @@ public class Stack<T> {
         size++;
     }
 
-    public T pop() {
-        Node<T> trash = top;
+    public void pop() {
         top = top.next();
         size--;
-        return trash.data();
     }
 
     public T top() {
@@ -40,21 +38,22 @@ public class Stack<T> {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         Node<T> head = top;
-        sb.append("(");
+        // sb.append("(");
         String prefix = "";
         while (head != null) {
             sb.append(prefix).append(head.data());
             prefix = ", ";
             head = head.next();
         }
-        sb.append(")");
+        // sb.append(")");
         return sb.toString();
     }
 
     public Stack<T> reverse() {
         Stack<T> reversed = new Stack<>();
         while (!isEmpty()) {
-            reversed.push(pop());
+            reversed.push(top());
+            pop();
         }
         return reversed;
     }

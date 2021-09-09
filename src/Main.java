@@ -48,13 +48,11 @@ class Queue<T> {
         size++;
     }
 
-    public T dequeue() {
-        Node<T> trash = front;
+    public void dequeue() {
         if (front == null) throw new NoSuchElementException("Can't dequeue from an empty queue");
         else if (front == rear) front = rear = null;
         else front = front.next();
         size--;
-        return trash.data();
 
     }
 
@@ -103,11 +101,9 @@ class Stack<T> {
         size++;
     }
 
-    public T pop() {
-        Node<T> trash = top;
+    public void pop() {
         top = top.next();
         size--;
-        return trash.data();
     }
 
     public T top() {
@@ -140,7 +136,8 @@ class Stack<T> {
     public Stack<T> reverse() {
         Stack<T> reversed = new Stack<>();
         while (!isEmpty()) {
-            reversed.push(pop());
+            reversed.push(top());
+            pop();
         }
         return reversed;
     }
@@ -162,8 +159,10 @@ class Deck {
 
     private void shuffleDiscard() {
         while (deck.size() > 1) {
-            throwaways.push(deck.dequeue());
-            deck.enqueue(deck.dequeue());
+            throwaways.push(deck.front());
+            deck.dequeue();
+            deck.enqueue(deck.front());
+            deck.dequeue();
         }
         throwaways = throwaways.reverse();
     }
@@ -203,6 +202,5 @@ public class Main {
             System.out.println((leadingText + deck.throwaways()).trim());
             System.out.println("Remaining card: " + deck.deck());
         }
-        System.out.println();
     }
 }
