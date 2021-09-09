@@ -26,8 +26,10 @@ public class Main {
         Deck deck;
         for (int i : input) {
             deck = new Deck(i);
-            System.out.println("Discarded cards: " + deck.throwaways());
+            String leadingText = (deck.throwaways().isEmpty()) ? "Discarded cards:" : "Discarded cards: ";
+            System.out.println((leadingText + deck.throwaways()).trim());
             System.out.println("Remaining card: " + deck.deck());
         }
+        System.out.println();
     }
 }

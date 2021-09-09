@@ -50,4 +50,12 @@ public class Stack<T> {
         sb.append(")");
         return sb.toString();
     }
+
+    public Stack<T> reverse() {
+        Stack<T> reversed = new Stack<>();
+        while (!isEmpty()) {
+            reversed.push(pop());
+        }
+        return reversed;
+    }
 }
